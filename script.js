@@ -1,8 +1,11 @@
 
 function createSlides() {
 	var editorContent = editor.getValue();
-	var newSlide = document.createElement("SECTION");
-	var t = document.createTextNode(editorContent);
-	newSlide.appendChild(t);
-	$('.slides').append(newSlide);
+	var contentLines = editorContent.split("\n");
+	for (var i=0; i<contentLines.length; i++) {
+		var newSlide = document.createElement("SECTION");
+		var t = document.createTextNode(contentLines[i]);
+		newSlide.appendChild(t);
+		$('.slides').append(newSlide);
+	}
 }
