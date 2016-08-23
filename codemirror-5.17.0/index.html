@@ -1,0 +1,71 @@
+<!doctype html>
+<head>
+  <title>CodeMirror: Theme Demo</title>
+  <meta charset="utf-8"/>
+  <link rel=stylesheet href="style.css">
+
+  <link rel="stylesheet" href="lib/codemirror.css">
+  <link rel="stylesheet" href="theme/material.css">
+  <script src="lib/codemirror.js"></script>
+  <script src="mode/javascript/javascript.js"></script>
+  <script src="addon/selection/active-line.js"></script>
+  <script src="addon/edit/matchbrackets.js"></script>
+
+  <link rel="stylesheet" href="../reveal.js-3.3.0/css/reveal.css">
+  <!-- <link rel="stylesheet" href="../reveal.js-3.3.0/css/theme/black.css"> -->
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js-3.3.0/css/print/pdf.css' : '../reveal.js-3.3.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+
+<body>
+
+<article>
+<h2>Enter Script</h2>
+<form><textarea id="code" name="code">
+function findSequence(goal) {
+  function find(start, history) {
+    if (start == goal)
+      return history;
+    else if (start > goal)
+      return null;
+    else
+      return find(start + 5, "(" + history + " + 5)") ||
+             find(start * 3, "(" + history + " * 3)");
+  }
+  return find(1, "1");
+}</textarea></form>
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+    theme: "material"
+  });
+</script>
+</article>
+
+<!-- Output presentation preview -->
+<div id="PreviewBox">
+  <div class="reveal">
+    <div class="slides">
+      <section>Slide 1</section>
+      <section>Slide 2</section>
+    </div>
+  </div>
+  <script src="../reveal.js-3.3.0/lib/js/head.min.js"></script>
+  <script src="../reveal.js-3.3.0/js/reveal.js"></script>
+  <script>Reveal.initialize({
+    width: 800,
+    height: 800,
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+    });</script>
+</div>
+
+</body>
