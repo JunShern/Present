@@ -50,7 +50,10 @@ to get an idea of how this works.</textarea>
 			lineNumbers: true,
 			styleActiveLine: true,
 			matchBrackets: true,
-			theme: "material"
+			theme: "material",
+		    extraKeys: {  // Keyboard shortcuts
+		        "Ctrl-Enter": function(){createSlides()}
+		    }
 		});
 		</script>
 		<input id="createSlidesButton" class="ui-button ui-widget ui-corner-all" type="submit" value="Create slides" onclick="createSlides()">
