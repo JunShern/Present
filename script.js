@@ -1,4 +1,16 @@
 
+function search(query) {
+	$("#content").empty(); 
+	$.get("https://www.googleapis.com/customsearch/v1?cx=006285665057136291577%3A8i6a7ag49hs&filter=0&searchType=image&\
+		key=AIzaSyDJG_126BKdh0TquHZ1MmRr6spD5_JPubc&q="+query, function(response) {
+		for (var i = 0; i < response.items.length; i++) {
+			var item = response.items[i];
+			// in production code, item.htmlTitle should have the HTML entities escaped.
+			document.getElementById("content").innerHTML += "<img src='" + item.link + "' height=80px>";
+		}
+	});
+}
+
 function createSlides() {
 	var editorContent = editor.getValue();
 	var contentLines = editorContent.split("\n");
@@ -12,7 +24,9 @@ function createSlides() {
 		$('.slides').append(newSlide);
 	}
 	Reveal.slide(0,0,0); // Return to first slide
-	nlpAnalysis(editorContent);
+	var topics = nlpAnalysis(editorContent);
+
+	search(topics[0]);
 }
 
 function nlpAnalysis(strInput) {
@@ -55,13 +69,4 @@ function getTopic(strInput) {
 	// }
 	// console.log(words);
 	//return(selectedTopic);
-}
-
-function search() {
-	// Create a Custom Search Element
-	var customSearchControl = new google.search.CustomSearchControl('006285665057136291577:8i6a7ag49hs');
-
-	// Draw the control in example-div
-	customSearchControl.draw('searchBox');
-	customSearchControl.execute('cats');
 }
