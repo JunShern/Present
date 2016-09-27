@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>JSON/Atom Custom Search API Example</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+  </head>
+  <body>
+    <div id="content"></div>
+    <script>
+      function hndlr(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+        console.log()
+        document.getElementById("content").innerHTML += "<img src='" + item.link + "'>";
+      }
+    }
+    </script>
+    <script src="https://www.googleapis.com/customsearch/v1?q=cheese&cx=006285665057136291577%3A8i6a7ag49hs&filter=0&searchType=image&key=AIzaSyDJG_126BKdh0TquHZ1MmRr6spD5_JPubc&callback=hndlr">
+    </script>
+  </body>
+</html>
