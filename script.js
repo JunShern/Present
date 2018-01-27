@@ -37,22 +37,18 @@ function createSlides() {
 		//newSlide.setAttribute("data-background-image", imageURL);
 		var topics = nlpAnalysis(contentLines[i]);
 		if (topics.length) {
+			console.log(topics[0]);
 			search(topics[0]);
 		}
 		$('.slides').append(newSlide);
 	}
-	Reveal.slide(0,0,0); // Return to first slide
+	// Reveal.slide(0,0,0); // Return to first slide
 }
 
 function nlpAnalysis(strInput) {
-	nlp = window.nlp_compromise;
-	var output = nlp.text(strInput).topics();
-	var topicList = output.map(function(a) {return a.text;}); 
-	// var lines = strInput.split("\n");
-	// for (var i=0; i<lines.length; i++) {
-	// 	var line = lines[i];
-	// 	getTopic(line);
-	// }
+	console.log(strInput);
+	var output = nlp(strInput).topics();
+	var topicList = output.data().map(function(a) {return a.text;}); 
 	return(topicList);
 }
 
