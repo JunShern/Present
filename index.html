@@ -1,94 +1,60 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Present</title>
+	<title>Present</title>
 
-		<!-- Code Mirror imports -->
-		<link rel="stylesheet" href="codemirror/lib/codemirror.css">
-		<link rel="stylesheet" href="codemirror/theme/material.css">
-		<script src="codemirror/lib/codemirror.js"></script>
-		<script src="codemirror/mode/javascript/javascript.js"></script>
-		<script src="codemirror/addon/selection/active-line.js"></script>
-		<script src="codemirror/addon/edit/matchbrackets.js"></script>
+	<!-- Custom imports -->
+	<script src="script.js"></script>
+	<link rel=stylesheet href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
 
-		<!-- Reveal.js imports -->
-		<link rel="stylesheet" href="revealjs/css/reveal.css">
-		<link rel="stylesheet" href="revealjs/css/theme/solarized.css">
-		<!-- Theme used for syntax highlighting of code -->
-		<!-- <link rel="stylesheet" href="reveal.js-3.3.0/lib/css/zenburn.css"> -->
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'revealjs/css/print/pdf.css' : 'revealjs/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+	<!-- Code Mirror imports -->
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror/theme/material.css">
+	<script src="codemirror/lib/codemirror.js"></script>
+	<script src="codemirror/mode/javascript/javascript.js"></script>
+	<script src="codemirror/addon/selection/active-line.js"></script>
+	<script src="codemirror/addon/edit/matchbrackets.js"></script>
 
-		<!-- Custom imports -->
-		<script src="script.js"></script>
-		<link rel=stylesheet href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
-		<!-- Javascript NLP library -->
-		<script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
-		
+	<!-- Reveal.js imports -->
+	<link rel="stylesheet" href="revealjs/css/reveal.css">
+	<link rel="stylesheet" href="revealjs/css/theme/solarized.css">
+	<script src="revealjs/lib/js/head.min.js"></script>
+	<script src="revealjs/js/reveal.js"></script>
 
-	</head>
-	<body>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="reveal.js-3.3.0/lib/css/zenburn.css">
 
-		<article>
+	<!-- Javascript NLP library -->
+	<script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
+
+</head>
+
+<body>
+	<article>
 		<h2>Enter Script</h2>
-		<form><textarea id="code" name="code">
-Hello!
-This is an example of
-PScript
+		<!-- Text input box -->
+		<form>
+			<textarea id="code" name="code">
+Hello friends!
+This is an example. 
+To get an idea of how this works,
 Click on the "Create slides" button below
-to get an idea of how this works.</textarea>
+			</textarea>
 		</form>
-		<script>
-		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-			lineNumbers: true,
-			styleActiveLine: true,
-			matchBrackets: true,
-			theme: "material",
-		    extraKeys: {  // Keyboard shortcuts
-		        "Ctrl-Enter": function(){createSlides()}
-		    }
-		});
-		</script>
 		<input id="createSlidesButton" class="ui-button ui-widget ui-corner-all" type="submit" value="Create slides" onclick="createSlides()">
+		<!-- Preview panel for search results from Google Custom Search API -->
+		<div id="content"></div>	
+	</article>
 
-		<!-- Google Custom Search API (for Image Search) -->
-		<div id="content"></div>
-		
-		</article>
+	<!-- Slides go in here -->
+	<div class="reveal" style="width:600px; float:right">
+		<div class="slides" id="slides"></div>
+	</div>
+</body>
 
-		<div class="reveal" style="width:600px; float:right">
-			<div class="slides" id="slides">
-			</div>
-		</div>
-		<script type="text/javascript">createSlides()</script>
-
-		<script src="revealjs/lib/js/head.min.js"></script>
-		<script src="revealjs/js/reveal.js"></script>
-
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
-
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'revealjs/plugin/markdown/marked.js' },
-					{ src: 'revealjs/plugin/markdown/markdown.js' },
-					{ src: 'revealjs/plugin/notes/notes.js', async: true },
-					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
 </html>
