@@ -10,11 +10,11 @@ Using Present, users should be able to overcome these problems using a simple wo
 
 2. Feed the script into Present, and slides are automagically generated (less time spent on designing slides)
 
-##How It Works
-###PScript
+## How It Works
+### PScript
 PScript is the set of rules to format plain text into presentation slides - think a very syntax-light version of LaTeX / Markdown, specifically for slide-formatting.
 
-###Slide-generation
+### Slide-generation
 Present will accept as input a PScript file, and generate slides from the script using the following ideas:
 - Create a slide for each paragraph (currently using [reveal.js](https://github.com/hakimel/reveal.js/ 'reveal.js'))
 - Pick out 'topic words' from the paragraph using Natural Language Processing tools (currently using [nlp_compromise](https://github.com/nlp-compromise/nlp_compromise 'nlp_compromise'))
